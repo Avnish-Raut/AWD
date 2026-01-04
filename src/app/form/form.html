@@ -1,0 +1,19 @@
+<div class="app-form">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div>
+      <input type="email" formControlName="email" placeholder="Email" />
+      <p *ngIf="submitted && form.get('email')?.invalid">Invalid email</p>
+    </div>
+
+    <div>
+      <input type="password" formControlName="password" placeholder="Password" />
+      <p *ngIf="submitted && form.get('password')?.invalid">
+        Password is required and must be at least 8 characters
+      </p>
+    </div>
+
+    <button type="submit">Submit</button>
+
+    <p *ngIf="submissionSuccessful" style="color: green">Form submitted successfully</p>
+  </form>
+</div>

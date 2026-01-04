@@ -1,0 +1,11 @@
+<h2>product list from API</h2>
+
+@for (product of products; track $index) {
+
+<li style="border: 1px solid black; padding: 10px; margin-bottom: 2px">
+  <p>Name: {{ product.title }}</p>
+  <p>Description: {{ product.description }}</p>
+  <p>Brand : {{ product.brand }}</p>
+  <p>Rating : {{ product.rating }}</p>
+</li>
+}

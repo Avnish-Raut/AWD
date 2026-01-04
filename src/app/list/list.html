@@ -1,0 +1,21 @@
+<h2>Displaying a list of heterogeneous entities:</h2>
+
+@for (entity of entities; track $index) {
+<li style="border: 1px solid black; padding: 10px; margin-bottom: 2px">
+  @if (entity.subjectName) {
+  <strong>This is a module: </strong>
+  <p>Module Name: {{ entity.subjectName }}</p>
+  <p>Credits: {{ entity.credits }}</p>
+  }@else if (entity.address) {
+  <strong>This is an address: </strong>
+  <p>Address: {{ entity.address }}</p>
+  <p>Rent: {{ entity.rent }}</p>
+  }@else {
+  <strong>This is a user:</strong>
+  <p>Username: {{ entity.userName }}</p>
+  <p>Email: {{ entity.email }}</p>
+  }
+</li>
+} @empty {
+<li>No Data found.</li>
+}
