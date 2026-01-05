@@ -16,28 +16,28 @@ class TestHostComponent {}
 
 @Component({
   standalone: true,
-  template: `<p>dummy</p>`,
+  template: '<p>dummy</p>',
 })
 class DummyComponent {}
 
 describe('Router navigation', () => {
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [TestHostComponent],
       providers: [provideRouter([{ path: 'list', component: DummyComponent }])],
     }).compileComponents();
-  }));
+  });
 
-  it('should navigate to /comp1 when link is clicked', waitForAsync(() => {
+  it('should navigate to /list when link is clicked', async () => {
     const fixture = TestBed.createComponent(TestHostComponent);
     fixture.detectChanges();
 
     const anchor = fixture.debugElement.query(By.css('a')).nativeElement;
     anchor.click();
 
-    fixture.whenStable().then(() => {
-      const location = TestBed.inject(Location);
-      expect(location.path()).toEqual('/list');
-    });
-  }));
+    await fixture.whenStable();
+
+    const location = TestBed.inject(Location);
+    expect(location.path()).toBe('/list');
+  });
 });
